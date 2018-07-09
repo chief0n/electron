@@ -129,10 +129,12 @@ config("node_config") {
   defines = [
     # We need to access internal implementations of Node.
     "NODE_WANT_INTERNALS=1",
-    "NODE_SHARED_MODE",
     "HAVE_OPENSSL=1",
     "HAVE_INSPECTOR=1",
   ]
+  if (is_component_build) {
+    defines += [ "NODE_SHARED_MODE" ]
+  }
 }
 
 group("node") {
