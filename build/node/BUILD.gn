@@ -52,6 +52,7 @@ action("gyp_node") {
     "-D", "target_arch=$target_cpu",
     "-D", "host_arch=$host_cpu",
     "-D", "config_gypi=" + rebase_path("$target_gen_dir/config.gypi"),
+    "-D", "is_component_build=$is_component_build",
     "-Goutput_dir=./$target_out_dir", # bizarrely, gyp generates from the build root instead of from cwd
     "-fninja",
     rebase_path("//third_party/electron_node/node.gyp", root_build_dir),
